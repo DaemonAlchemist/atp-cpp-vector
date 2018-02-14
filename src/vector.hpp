@@ -29,44 +29,44 @@ namespace ATP
 				static Vector Z;
 
 				//Static functions
-				static Vector random(float length);
+				static Vector random(double length);
 				static Vector midpoint(const Vector &v1, const Vector &v2);
 
 				Vector();
-				Vector(float x1, float y1, float z1);
+				Vector(double x1, double y1, double z1);
 				
-		        void Set(float x1, float y1, float z1){x=x1;y=y1;z=z1;}
+		        void Set(double x1, double y1, double z1){x=x1;y=y1;z=z1;}
 		
 				Vector& operator =(const Vector &v);
 				Vector& operator +=(const Vector &v);
 				Vector& operator -=(const Vector &v);
 		
 				//Scalar multiplication/division
-				Vector& operator *=(float d);
-				Vector& operator /=(float d);
-		        friend Vector operator * (const Vector &v, float d);
-				friend Vector operator * (float d, const Vector &v);
-				friend Vector operator / (const Vector &v, float d);
+				Vector& operator *=(double d);
+				Vector& operator /=(double d);
+		        friend Vector operator * (const Vector &v, double d);
+				friend Vector operator * (double d, const Vector &v);
+				friend Vector operator / (const Vector &v, double d);
 		
 		        //Length-related
-				float length() const{return sqrt(length2());};
-		        float length2() const{return x*x + y*y + z*z;};
+				double length() const{return sqrt(length2());};
+		        double length2() const{return x*x + y*y + z*z;};
 		        Vector normalize() const;
 
 				//Rotation
-		        Vector rotate(const Vector &axis, float angle) const;
-				Vector rotateTo(const Vector goal, float amount) const;
+		        Vector rotate(const Vector &axis, double angle) const;
+				Vector rotateTo(const Vector goal, double amount) const;
 
 				//Spherical coordinates
-				float psi();
-				float theta();
+				double psi();
+				double theta();
 
 				//Vector addition/subtraction
 		        friend Vector operator - (const Vector &v1, const Vector &v2);
 				friend Vector operator + (const Vector &v1, const Vector &v2);
 		
 				//Vector dot(*)/cross(^) product
-		        friend float operator *(const Vector &v1,const Vector &v2);
+		        friend double operator *(const Vector &v1,const Vector &v2);
 				friend Vector operator ^(const Vector &v1,const Vector &v2);
 		
 				//Comparison
@@ -77,9 +77,9 @@ namespace ATP
 				Vector project(const Vector &v2);
 				Vector perpendicular(const Vector &v2);
 
-				float x;
-				float y;
-				float z;
+				double x;
+				double y;
+				double z;
 		};
 	}
 }

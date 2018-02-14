@@ -20,7 +20,7 @@ namespace ATP
 			z=0.0;
 		}
 		
-		Vector::Vector(float x1, float y1, float z1)
+		Vector::Vector(double x1, double y1, double z1)
 		{
 			x=x1;
 			y=y1;
@@ -30,7 +30,7 @@ namespace ATP
 		//-------------------------------------------------------------------//
 		
 		//--Dot Product--//
-		float operator *(const class Vector &v1,const class Vector &v2)
+		double operator *(const class Vector &v1,const class Vector &v2)
 		{
 			return(v1.x*v2.x + v1.y*v2.y + v1.z*v2.z);
 		}
@@ -54,7 +54,7 @@ namespace ATP
 			return *this;
 		}
 		
-		Vector operator *(const Vector &v, float d)
+		Vector operator *(const Vector &v, double d)
 		{
 			Vector temp;
 		
@@ -64,7 +64,7 @@ namespace ATP
 			return temp;
 		}
 		
-		Vector operator *(float d, const Vector &v)
+		Vector operator *(double d, const Vector &v)
 		{
 			Vector temp;
 		
@@ -74,7 +74,7 @@ namespace ATP
 			return temp;
 		}
 		
-		Vector operator /(const Vector &v, float d)
+		Vector operator /(const Vector &v, double d)
 		{
 			Vector temp;
 		
@@ -84,7 +84,7 @@ namespace ATP
 		    return temp;
 		}
 		
-		Vector& Vector::operator /=(float d)
+		Vector& Vector::operator /=(double d)
 		{
 			x/=d;
 			y/=d;
@@ -92,7 +92,7 @@ namespace ATP
 			return *this;
 		}
 		
-		Vector& Vector::operator *=(float d)
+		Vector& Vector::operator *=(double d)
 		{
 			x*=d;
 			y*=d;
@@ -148,21 +148,21 @@ namespace ATP
 		
 		//---------------------------------------------------------------------//
 		
-		float Random(float min, float max)
+		double Random(double min, double max)
 		{
-			return (float)rand()/(float)RAND_MAX*(max-min)+min;
+			return rand()/RAND_MAX*(max-min)+min;
 		}
 		
 		//--Random unit Vectors--//
 		//-------IMPROVE!-------//
-		Vector Vector::random(float length)
+		Vector Vector::random(double length)
 		{
 		 Vector temp;
-		 float theta1,theta2;
+		 double theta1,theta2;
 		
 		 //Random direction
-		 theta1=Random(0.0f,2.0f*(float)M_PI);
-		 theta2=Random(-(float)M_PI/2.0f,(float)M_PI/2.0f);
+		 theta1=Random(0.0f,2.0f*M_PI);
+		 theta2=Random(-M_PI/2.0f,M_PI/2.0f);
 		
 		 //Set the components
 		 temp.x=cos(theta1)*cos(theta2);
@@ -195,7 +195,7 @@ namespace ATP
 		    	        return (*this);
 		}
 		
-		Vector Vector::rotate(const Vector &axis, float angle) const
+		Vector Vector::rotate(const Vector &axis, double angle) const
 		{
 			Vector temp=*this;
 			if(axis.length2() < 0.00000000001) return temp;
@@ -209,17 +209,17 @@ namespace ATP
 			return temp;
 		}
 
-		Vector Vector::rotateTo(const Vector goal, float amount) const
+		Vector Vector::rotateTo(const Vector goal, double amount) const
 		{
 			return rotate((*this)^goal,acos((*this)*goal)*amount);
 		}
 
-		float Vector::theta()
+		double Vector::theta()
 		{
 			return acos(normalize().z);
 		}
 
-		float Vector::psi()
+		double Vector::psi()
 		{
 			return atan2(normalize().y,normalize().x);
 		}
