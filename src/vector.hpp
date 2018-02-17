@@ -74,8 +74,8 @@ namespace ATP
 				friend bool operator !=(const Vector &v1, const Vector &v2);
 		
 				//Other
-				Vector project(const Vector &v2);
-				Vector perpendicular(const Vector &v2);
+				Vector projectionOnto(const Vector &v2);
+				Vector rejectionFrom(const Vector &v2);
 
 				double x;
 				double y;

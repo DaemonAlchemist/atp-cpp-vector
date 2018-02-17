@@ -177,14 +177,14 @@ namespace ATP
 			return (v1+v2)/2.0;
 		}
 		
-		Vector Vector::project(const Vector &v2)
+		Vector Vector::projectionOnto(const Vector &v2)
 		{
 			return (((*this)*v2)/v2.length2())*v2;
 		}
 		
-		Vector Vector::perpendicular(const Vector &v2)
+		Vector Vector::rejectionFrom(const Vector &v2)
 		{
-			return (*this) - project(v2);
+			return (*this) - projectionOnto(v2);
 		}
 		
 		Vector Vector::normalize() const
@@ -200,7 +200,7 @@ namespace ATP
 			Vector temp=*this;
 			if(axis.length2() < 0.00000000001) return temp;
 
-			Vector proj=temp.project(axis);
+			Vector proj=temp.projectionOnto(axis);
 			Vector right=temp-proj;
 			Vector up=(axis^right).normalize();
 			up=right.length()*sin(angle)*up;
