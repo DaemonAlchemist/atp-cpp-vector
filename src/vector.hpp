@@ -1,7 +1,7 @@
 #ifndef MATH_VECTOR
 #define MATH_VECTOR
 
-#ifndef ATP_LIB
+#ifndef ATP_VECTOR_LIB
 #pragma comment(lib, "atp-vector.lib")
 #endif
 
